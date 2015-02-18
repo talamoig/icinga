@@ -36,21 +36,19 @@
 # Copyright 2011 Your name here, unless otherwise noted.
 #
 class icinga(
-  $dbtype,
-  $dbhost,
-  $dbuser,
-  $dbpasswd,
-  $dbname,
-  $features = []
-)
-{
+  $dbtype   = $icinga::params::dbtype,
+  $dbhost   = $icinga::params::dbhost,
+  $dbuser   = $icinga::params::dbuser,
+  $dbpasswd = $icinga::params::dbpasswd,
+  $dbname   = $icinga::params::dbname,
+  $features = $icinga::params::features
+) inherits icinga::params {
 
   case $::osfamily {
     RedHat: {
 
-      Class[icinga::yumrepo] -> Class[icinga::package] -> Class[icinga::params] -> Class[icinga::configure] -> Class[icinga::service]
-
-      class { 'icinga::params': }
+      Class[icinga::yumrepo] -> Class[icinga::package] -> Class[icinga::configure] -> Class[icinga::service]
+      
       class { 'icinga::yumrepo': }
       class { 'icinga::package': }
       class { 'icinga::service': }

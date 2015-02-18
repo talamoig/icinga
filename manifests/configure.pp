@@ -9,9 +9,9 @@ class icinga::configure {
     }    
   }
 
-  icinga_feature{ $icinga::features: }
+  icinga_feature{ $icinga::params::features: }
 
-  if $icinga::dbtype=='mysql' {
+  if $icinga::params::dbtype=='mysql' {
     file{"${icinga::params::features_avail_path}/ido-mysql.conf" :
       content => template('icinga/ido-mysql.erb'),
       notify  => Class['icinga::service'],
