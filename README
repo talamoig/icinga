@@ -1,6 +1,6 @@
-puppet-icinga
+# puppet-icinga
 
-This is the puppet-icinga module.
+puppet module to manage the icinga2 back-end. No web interface, no http, no mysql, no apache.
 
 License
 -------

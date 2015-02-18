@@ -35,7 +35,29 @@
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class puppet-icinga {
+class icinga(
+  $dbtype,
+  $dbhost,
+  $dbuser,
+  $dbpasswd,
+  $dbname,
+  $features = []
+)
+{
 
+  case $::osfamily {
+    RedHat: {
+
+      Class[icinga::yumrepo] -> Class[icinga::package] -> Class[icinga::params] -> Class[icinga::configure] -> Class[icinga::service]
+
+      class { 'icinga::params': }
+      class { 'icinga::yumrepo': }
+      class { 'icinga::package': }
+      class { 'icinga::service': }
+      class { 'icinga::configure': }
+      
+    }
+    default: { fail("Currently unavailable for ${osfamily}") }
+  }
 
 }
