@@ -1,16 +1,14 @@
-# puppet-icinga
+# icinga
 
-puppet module to manage the icinga2 back-end. No web interface, no http, no mysql, no apache.
-
-License
--------
+Puppet module to manage the icinga2 back-end. 
+No dependencies, no web interface, no http, no mysql, no apache.
 
 
-Contact
--------
+
+## License
 
 
-Support
--------
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+#### Support
+
+Please log issues at [github](https://github.com/talamoig/icinga/issues).
