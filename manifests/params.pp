@@ -9,11 +9,16 @@ class icinga::params {
   $features_avail_path = '/etc/icinga2/features-available'
   $features_enabled_path = '/etc/icinga2/features-enabled'
 
-  $ido_db = $::icinga::params::dbtype ? {
-    'mysql' => 'icinga2-ido-mysql',
-    'pgsql' => 'icinga2-ido-pgsql',
-    default => fail("${::icinga::params::dbtype} database not supported")
-  }
-  
+  case $::icinga::params::dbtype {
+    'mysql' : {
+      $ido_db = 'icinga2-ido-mysql'
+      $features_all+='ido-mysql'
+    }
+    'pgsql' : {
+      $ido_db = 'icinga2-ido-pgsql'
+      $features_all+='ido-pgsql'
+    }
+    default : { fail("${::icinga::params::dbtype} database not supported") }
+  }  
   
 }

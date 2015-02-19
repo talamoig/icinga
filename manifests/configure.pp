@@ -9,7 +9,7 @@ class icinga::configure {
     }    
   }
 
-  icinga_feature{ $icinga::params::features: }
+  icinga_feature{ $icinga::params::features_all: }
 
   if $icinga::params::dbtype=='mysql' {
     file{"${icinga::params::features_avail_path}/ido-mysql.conf" :
