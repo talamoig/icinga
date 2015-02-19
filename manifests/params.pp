@@ -11,12 +11,12 @@ class icinga::params {
 
   case $::icinga::params::dbtype {
     'mysql' : {
-      $ido_db = 'icinga2-ido-mysql'
-      $features_all+='ido-mysql'
+      $ido_db        = 'icinga2-ido-mysql'
+      $features_all += 'ido-mysql'
     }
     'pgsql' : {
-      $ido_db = 'icinga2-ido-pgsql'
-      $features_all+='ido-pgsql'
+      $ido_db        = 'icinga2-ido-pgsql'
+      $features_all += 'ido-pgsql'
     }
     default : { fail("${::icinga::params::dbtype} database not supported") }
   }  
