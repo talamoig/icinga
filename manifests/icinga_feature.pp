@@ -1,4 +1,5 @@
 define icinga::icinga_feature {
+  
   file{$title:
     ensure => link,
     path   => "${icinga::params::features_enabled_path}/${title}.conf",

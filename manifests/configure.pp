@@ -1,9 +1,10 @@
 class icinga::configure {
+  
+  icinga::icinga_feature{ $icinga::features: }
+  icinga::icinga_feature{ "ido-${icinga::dbtype}": }
 
-  icinga::icinga_feature{ $icinga::params::features_all: }
-
-  file{"${icinga::params::features_avail_path}/ido-${::icinga::params::dbtype}.conf" :
-    content => template("icinga/ido-${::icinga::params::dbtype}.erb"),
+  file{"${icinga::params::features_avail_path}/ido-${::icinga::dbtype}.conf" :
+    content => template("icinga/ido-${::icinga::dbtype}.erb"),
     notify  => Class['icinga::service'],
   }
 }
