@@ -64,7 +64,7 @@ Another parameter is `features` that contains the list of features to install, e
 
 	features => ['graphite', 'api']
 
-The list of available features is in `/etc/icinga2/features-available`.
+The list of available/disabled features can be obtained with the `icinga2 feature list` command from command line.
 Consider that the `ido-mysql` or `ido-pgsql` feature is installed automatically according
 to the `dbtype` parameter.
 
