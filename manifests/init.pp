@@ -24,7 +24,8 @@
 # === Examples
 #
 #  class { puppet-icinga:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+#    dbtype => 'pgsql',
+#    enabled_features => ['syslog']
 #  }
 #
 # === Authors
@@ -33,15 +34,16 @@
 #
 # === Copyright
 #
-# Copyright 2011 Your name here, unless otherwise noted.
+# Copyright 2015 talamoig
 #
 class icinga(
-  $dbtype   = $icinga::params::dbtype,
-  $dbhost   = $icinga::params::dbhost,
-  $dbuser   = $icinga::params::dbuser,
-  $dbpasswd = $icinga::params::dbpasswd,
-  $dbname   = $icinga::params::dbname,
-  $features = $icinga::params::features
+  $dbtype            = $icinga::params::dbtype,
+  $dbhost            = $icinga::params::dbhost,
+  $dbuser            = $icinga::params::dbuser,
+  $dbpasswd          = $icinga::params::dbpasswd,
+  $dbname            = $icinga::params::dbname,
+  $enabled_features  = $icinga::params::features,
+  $disabled_features = $icinga::params::no_features
 ) inherits icinga::params {
 
   case $::osfamily {
