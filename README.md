@@ -60,9 +60,9 @@ This is equivalent to:
 	   }
 
 The parameters names are self-explainatory. `dbtype` can be `pgsql` for PostgreSQL database.
-Another parameter is `features` that contains the list of features to install, eg.:
+Other two important parameters are `enabled_features` and `disabled_features`, eg:
 
-	features => ['graphite', 'api']
+	enabled_features => ['api', 'syslog']
 
 The list of available/disabled features can be obtained with the `icinga2 feature list` command from command line.
 Consider that the `ido-mysql` or `ido-pgsql` feature is installed automatically according
