@@ -16,11 +16,11 @@
 ## Overview
 
 
-Puppet module to manage the icinga2 backend for RedHat family.
+The [icinga2](https://www.icinga.org/) modules allows you to setup an icinga2 monitoring system.
 
 ## Module Description
 
-This modules install the icinga2 backend. No user interface is provided (that's icinga not nagios!)
+This modules install [icinga2](https://www.icinga.org/). No user interface is provided (that's icinga not nagios!)
 in this module, but icingaweb2 is available as a [separete module](https://github.com/talamoig/icingaweb2).
 
 It currently supports only MySQL database and assumes the database schema and user have already been created.
@@ -33,47 +33,38 @@ management, etc.) this is the time to mention it.
 
 ### What icinga affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* configuration files and directories (`/etc/icinga2`)
+* a new yum repo will be installed.
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+A MySQL database (local or remote) with proper credential must be available.
 
 ### Beginning with icinga
 
-The very basic steps needed for a user to get the module up and running.
+To install Icinga with default parameters 
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+     class {'::icinga':}
 
-## Usage
+With default parameters a MySQL database will be accessed on localhost. Its name
+must be `icinga` and the used credentials are `icinga` as username and `icinga` as password.
+This is equivalent to:
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+  class {'::icinga':
+    dbtype     => 'mysql',
+    dbhost     => 'localhost',
+    dbuser     => 'icinga',
+    dbpasswd   => 'icinga',
+    dbname     => 'icinga',
+  }
 
-## Reference
+The 
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-
-Please log issues at [github](https://github.com/talamoig/icinga/issues).
+This module has been tested only on Scientific Linux 6. 
+It should be compatible with any RedHat 6 based distribution.
 
 ## Release Notes/Contributors/Etc **Optional**
 
