@@ -47,8 +47,8 @@ To install Icinga with default parameters
 
      class {'::icinga': }
 
-With default parameters a MySQL database will be accessed on localhost. Its name
-must be `icinga` and the used credentials are `icinga` as username and `icinga` as password.
+With default parameters icinga will connect to a MySQL database on localhost named `icinga`.
+The used credentials are `icinga`/`icinga` as username/password.
 This is equivalent to:
 
      class {'::icinga':
@@ -59,15 +59,14 @@ This is equivalent to:
 	   dbname     => 'icinga',
 	   }
 
-The parameters names are self-explainatory. `dbtype` can be `pgsql` for PostgreSQL database.
+The parameters names are self-explainatory. `dbtype` can be `mysql` of `pgsql` for PostgreSQL database.
 Other two important parameters are `enabled_features` and `disabled_features`, eg:
 
 	enabled_features => ['api', 'syslog']
 
 The list of available/disabled features can be obtained with the `icinga2 feature list` command from command line.
-Consider that the `ido-mysql` or `ido-pgsql` feature is installed automatically according
+The `ido-mysql` or `ido-pgsql` (needed for database interaction) feature is installed automatically according
 to the `dbtype` parameter.
-
 
 ## Limitations
 
