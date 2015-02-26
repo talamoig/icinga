@@ -44,6 +44,7 @@ class icinga(
   $dbname            = $icinga::params::dbname,
   $enabled_features  = $icinga::params::features,
   $disabled_features = $icinga::params::no_features
+  $with_repo         = $icinga::params::with_repo
 ) inherits icinga::params {
 
   case $::osfamily {

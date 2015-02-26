@@ -9,4 +9,5 @@ class icinga::params {
   $icinga2_name          = 'icinga2'  
   $features_avail_path   = '/etc/icinga2/features-available'
   $features_enabled_path = '/etc/icinga2/features-enabled'
+  $with_repo             = True
 }
