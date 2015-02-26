@@ -11,7 +11,7 @@ class icinga::package {
   }  
 
   
-  $packages=[$ido_db, $icinga::params::icinga2_name]
+  $packages=[$ido_db, $icinga::params::icinga_name]
 
   package{ $packages:
     ensure => installed,    

@@ -1,5 +1,5 @@
 class icinga::service {
-  service{"icinga2":
+  service{$icinga::params::icinga_name:
     ensure => running,
     hasstatus => true,    
   }
