@@ -54,7 +54,7 @@ The used credentials are `icinga`/`icinga` as username/password.
 This is equivalent to:
 
      class {'::icinga':
-     	   dbtype     => 'mysql',
+	   dbtype     => 'mysql',
 	   dbhost     => 'localhost',
 	   dbuser     => 'icinga',
 	   dbpasswd   => 'icinga',
