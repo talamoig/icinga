@@ -1,11 +1,27 @@
 define icinga::feature(
-  $ensure
+  $action
 ) {
+
+  if ! ($action in ['enable', 'disable']) {
+    fail('action must be "enable" or "disable"')
+  }
+
+  $command="${icinga::params::icinga_bin} feature ${action} ${title}"
+  $featurecheck="/bin/ls ${icinga::params::features_enabled_path}/${title}.conf"
   
-  file{$title:
-    ensure => $ensure,
-    path   => "${icinga::params::features_enabled_path}/${title}.conf",
-    target => "${icinga::params::features_avail_path}/${title}.conf",
-    notify => Class['icinga::service']
-  }    
+  case $action {
+    'enable':  {
+      exec {"${action}-${title}":
+        command => $command,
+        unless  => $featurecheck,
+      }
+    }
+    'disable': {
+      exec {"${action}-${title}":
+        command => $command,
+        onlyif  => $featurecheck,
+      }
+    }
+  }
+  
 }

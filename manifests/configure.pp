@@ -1,14 +1,19 @@
 class icinga::configure {
   
   icinga::feature { $icinga::enabled_features:
-    ensure => link
+    action => 'enable'
   }
+
+  icinga::feature { $icinga::default_enabled_features:
+    action => 'disable'
+  }
+  
   icinga::feature { "ido-${icinga::dbtype}":
-    ensure => link
+    action => 'enable'
   }
 
   icinga::feature{ $icinga::disabled_features:
-    ensure => absent
+    action => 'disable'
   }
   
   file{"${icinga::params::features_avail_path}/ido-${::icinga::dbtype}.conf" :
