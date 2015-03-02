@@ -14,12 +14,14 @@ define icinga::feature(
       exec {"${action}-${title}":
         command => $command,
         unless  => $featurecheck,
+        notify  => Service[$icinga::params::icinga_name],
       }
     }
     'disable': {
       exec {"${action}-${title}":
         command => $command,
         onlyif  => $featurecheck,
+        notify  => Service[$icinga::params::icinga_name],
       }
     }
   }
