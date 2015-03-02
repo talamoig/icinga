@@ -3,10 +3,6 @@ class icinga::configure {
   icinga::feature { $icinga::enabled_features:
     action => 'enable'
   }
-
-  icinga::feature { $icinga::default_enabled_features:
-    action => 'enable'
-  }
   
   icinga::feature { "ido-${icinga::dbtype}":
     action => 'enable'

@@ -10,6 +10,5 @@ class icinga::params {
   $features_avail_path      = '/etc/icinga2/features-available'
   $features_enabled_path    = '/etc/icinga2/features-enabled'
   $with_repo                = True
-  $default_enabled_features = ['command']
   $icinga_bin               = '/usr/sbin/icinga2'
 }
