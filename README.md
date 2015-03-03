@@ -18,6 +18,10 @@
 
 The [icinga2](https://www.icinga.org/) module allows you to setup an icinga2 monitoring system.
 
+Available at 
+[Puppet Forge](https://forge.puppetlabs.com/talamoig/icinga) and 
+[GitHub](https://github.com/talamoig/icinga).
+
 ## Module Description
 
 This module installs [icinga2](https://www.icinga.org/) backend only without any user interface.
