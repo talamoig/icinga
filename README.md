@@ -20,11 +20,11 @@ The [icinga2](https://www.icinga.org/) modules allows you to setup an icinga2 mo
 
 ## Module Description
 
-This modules installs [icinga2](https://www.icinga.org/) backend only, so without any user interface.
-The webinterface icingaweb2 is available as a [separete module](https://github.com/talamoig/icingaweb2).
+This modules installs [icinga2](https://www.icinga.org/) backend only without any user interface.
+The web interface `icingaweb2` is available as a [separate module](https://github.com/talamoig/icingaweb2).
 
 It supports both MySQL and PostgreSQL database and assumes the database schema and user have already been created.
-If you need to do it, please follow informations provided 
+If it has not been done, please follow informations provided 
 [here](http://docs.icinga.org/icinga2/latest/doc/module/icinga2/chapter/getting-started#setting-up-mysql-db)
 for MySQL and 
 [here](http://docs.icinga.org/icinga2/latest/doc/module/icinga2/chapter/getting-started#installing-database-postgresql-server)
