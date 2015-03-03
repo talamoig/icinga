@@ -16,11 +16,11 @@
 ## Overview
 
 
-The [icinga2](https://www.icinga.org/) modules allows you to setup an icinga2 monitoring system.
+The [icinga2](https://www.icinga.org/) module allows you to setup an icinga2 monitoring system.
 
 ## Module Description
 
-This modules installs [icinga2](https://www.icinga.org/) backend only without any user interface.
+This module installs [icinga2](https://www.icinga.org/) backend only without any user interface.
 The web interface `icingaweb2` is available as a [separate module](https://github.com/talamoig/icingaweb2).
 
 It supports both MySQL and PostgreSQL database and assumes the database schema and user have already been created.
