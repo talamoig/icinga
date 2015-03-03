@@ -1,5 +1,5 @@
 name    'talamoig-icinga'
-version '0.0.1'
+version '0.0.2'
 source 'https://github.com/talamoig/icinga'
 author 'talamoig'
 license 'Apache License, Version 2.0'
