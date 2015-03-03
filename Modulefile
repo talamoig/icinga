@@ -6,6 +6,6 @@ license 'Apache License, Version 2.0'
 summary 'Icinga2 puppet module'
 description 'Puppet module for icinga2 backend only installation'
 project_page 'https://github.com/talamoig/icinga'
-
+issues_page 'https://github.com/talamoig/icinga/issues'
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'

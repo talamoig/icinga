@@ -6,7 +6,7 @@ class icinga::params {
   $dbname                   = 'icinga'
   $features                 = []
   $no_features              = []
-  $icinga_name              = 'icinga2'  
+  $icinga_name              = 'icinga2'
   $features_avail_path      = '/etc/icinga2/features-available'
   $features_enabled_path    = '/etc/icinga2/features-enabled'
   $with_repo                = True

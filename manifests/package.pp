@@ -6,15 +6,15 @@ class icinga::package {
     }
     'pgsql' : {
       $ido_db        = 'icinga2-ido-pgsql'
-    }    
+    }
     default : { fail("${::icinga::dbtype} database not supported") }
-  }  
+  }
 
   
   $packages=[$ido_db, $icinga::params::icinga_name]
 
   package{ $packages:
-    ensure => installed,    
+    ensure => installed,
   }
     
 }

@@ -50,7 +50,9 @@ class icinga(
   case $::osfamily {
     RedHat: {
 
-      Class[icinga::yumrepo] -> Class[icinga::package] -> Class[icinga::configure] -> Class[icinga::service]
+      Class[icinga::yumrepo]   -> Class[icinga::package]
+      Class[icinga::package]   -> Class[icinga::configure]
+      Class[icinga::configure] -> Class[icinga::service]
       
       class { 'icinga::yumrepo': }
       class { 'icinga::package': }
@@ -58,7 +60,7 @@ class icinga(
       class { 'icinga::configure': }
       
     }
-    default: { fail("Currently unavailable for ${osfamily}") }
+    default: { fail("Currently unavailable for ${::osfamily}") }
   }
 
 }

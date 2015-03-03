@@ -24,6 +24,9 @@ define icinga::feature(
         notify  => Service[$icinga::params::icinga_name],
       }
     }
+    default: {
+      fail('action must be "enable" or "disable"')
+    }
   }
   
 }
