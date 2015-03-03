@@ -16,12 +16,14 @@
 ## Overview
 
 
-The [icinga2](https://www.icinga.org/) modules allows you to setup an icinga2 monitoring system.
+The [icinga2](https://www.icinga.org/) module allows you to setup an icinga2 monitoring system.
 
 ## Module Description
 
-This modules installs [icinga2](https://www.icinga.org/) backend only without any user interface.
-The web interface `icingaweb2` is available as a [separate module](https://github.com/talamoig/icingaweb2).
+This module installs [icinga2](https://www.icinga.org/) backend only without any user interface.
+The web interface `icingaweb2` is available as a separate module
+([github](https://github.com/talamoig/icingaweb2), [puppet
+forge](https://forge.puppetlabs.com/talamoig/icingaweb2).
 
 It supports both MySQL and PostgreSQL database and assumes the database schema and user have already been created.
 If it has not been done, please follow informations provided 
@@ -72,7 +74,7 @@ to the `dbtype` parameter.
 
 ## Limitations
 
-This module has been tested only on Scientific Linux 6. 
+This module has been tested on Scientific Linux 6 and CentOS 6 with Puppet 3.1.1 and 3.7.4.
 It should be compatible with any RedHat 6 based distribution.
 
 ## Release Notes/Contributors/Etc **Optional**
