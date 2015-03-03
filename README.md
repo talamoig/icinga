@@ -72,7 +72,7 @@ to the `dbtype` parameter.
 
 ## Limitations
 
-This module has been tested only on Scientific Linux 6. 
+This module has been tested on Scientific Linux 6 and CentOS 6 with Puppet 3.1.1 and 3.7.4.
 It should be compatible with any RedHat 6 based distribution.
 
 ## Release Notes/Contributors/Etc **Optional**
