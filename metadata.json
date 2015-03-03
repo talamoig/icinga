@@ -1,0 +1,31 @@
+{
+  "name": "talamoig-icinga",
+  "version": "0.0.3",
+  "author": "talamoig",
+  "summary": "Icinga2 puppet module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/talamoig/icinga",
+  "issues_url": "https://github.com/talamoig/icinga/issues",
+  "project_page": "https://github.com/talamoig/icinga",
+  "description": "Puppet module for icinga2 backend only installation",
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "operatingsystem_support": [
+       {
+	"operatingsystem":"RedHat",
+	"operatingsystemrelease":[ "6" ]
+       },
+       {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [ "6" ]
+      },
+       {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [ "6" ]
+      }
+      ]
+}

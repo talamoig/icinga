@@ -37,7 +37,7 @@ for PostgreSQL.
 ### What icinga affects
 
 * configuration files and directories (`/etc/icinga2`)
-* a new yum repository will be installed.
+* a new yum repository will be installed by default
 
 The yum repository installation can be disabled passing `with_repo => False` to the `icinga` class.
 
