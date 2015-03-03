@@ -21,7 +21,9 @@ The [icinga2](https://www.icinga.org/) module allows you to setup an icinga2 mon
 ## Module Description
 
 This module installs [icinga2](https://www.icinga.org/) backend only without any user interface.
-The web interface `icingaweb2` is available as a [separate module](https://github.com/talamoig/icingaweb2).
+The web interface `icingaweb2` is available as a separate module
+([github](https://github.com/talamoig/icingaweb2), [puppet
+forge](https://forge.puppetlabs.com/talamoig/icingaweb2).
 
 It supports both MySQL and PostgreSQL database and assumes the database schema and user have already been created.
 If it has not been done, please follow informations provided 
