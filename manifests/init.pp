@@ -6,9 +6,8 @@
 #
 # Document parameters here.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*dbtype*]
+#   backend database type (mysql or pgsql)
 #
 # === Variables
 #
@@ -30,11 +29,11 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Author Name <talamoig@roma1.infn.it>
 #
 # === Copyright
 #
-# Copyright 2015 talamoig
+# Copyright 2015 talamoig@roma1.infn.it
 #
 class icinga(
   $dbtype            = $icinga::params::dbtype,
