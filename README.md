@@ -91,11 +91,11 @@ For using the Icinga Web 1.x interface you will need at least the following feat
 
 To install the Classic UI set `with_classicui => true` as parameter to the `icinga` class or with:
 
-   class{'::icinga::classicui':}
+    class{'::icinga::classicui':}
 
 If you also want to create the initial database schema you can add the parameter:
 
-   initdb => true,
+    initdb => true,
 
 Please note that this features has not been carefully tested so use it at your own risk.
 
