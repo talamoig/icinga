@@ -1,16 +1,7 @@
 class icinga::package {
 
-  case $::icinga::dbtype {
-    'mysql' : {
-      $ido_db        = 'icinga2-ido-mysql'
-    }
-    'pgsql' : {
-      $ido_db        = 'icinga2-ido-pgsql'
-    }
-    default : { fail("${::icinga::dbtype} database not supported") }
-  }
+  $ido_db= "icinga2-ido-${::icinga::dbtype}"
 
-  
   $packages=[$ido_db, $icinga::params::icinga_name]
 
   package{ $packages:

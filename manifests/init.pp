@@ -35,7 +35,7 @@
 #
 # Copyright 2015 talamoig@roma1.infn.it
 #
-class icinga(
+class icinga (
   $dbtype            = $icinga::params::dbtype,
   $dbhost            = $icinga::params::dbhost,
   $dbuser            = $icinga::params::dbuser,
@@ -43,7 +43,10 @@ class icinga(
   $dbname            = $icinga::params::dbname,
   $enabled_features  = $icinga::params::features,
   $disabled_features = $icinga::params::no_features,
-  $with_repo         = $icinga::params::with_repo
+  $with_repo         = $icinga::params::with_repo,
+  $initdb            = $icinga::params::initdb,
+  $with_classicui    = $icinga::params::with_classicui,
+  $with_webgui       = $icinga::params::with_webgui
 ) inherits icinga::params {
 
   case $::osfamily {
@@ -52,14 +55,23 @@ class icinga(
       Class[icinga::yumrepo]   -> Class[icinga::package]
       Class[icinga::package]   -> Class[icinga::configure]
       Class[icinga::configure] -> Class[icinga::service]
-      
+
       class { 'icinga::yumrepo': }
       class { 'icinga::package': }
       class { 'icinga::service': }
       class { 'icinga::configure': }
       
+      if ($with_classicui) {
+        class{'icinga::classicui':
+        }
+      }
+      
+      if ($with_webgui) {
+        class{'icinga::webgui':
+        }
+      }
+      
     }
     default: { fail("Currently unavailable for ${::osfamily}") }
   }
-
 }
