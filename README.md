@@ -122,7 +122,7 @@ Here we describe some typical setups for Icinga.
 
 #### Scenario 1: All-in-one
 
-In this setup we have a node called `monitoring-host` that will have:
+In this setup we have a node that will have:
 
  * a MySQL database for Icinga 2 monitoring;
  * Icinga 2 monitoring;
