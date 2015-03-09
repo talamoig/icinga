@@ -95,13 +95,14 @@ To install the Classic UI set `with_classicui => true` as parameter to the `icin
 
 If you also want to create the initial database schema you can add the parameter:
 
-    initdb => true,    
+    initdb => true,
 
 Please note that this features has not been carefully tested so use it at your own risk.
 
 You can also create users to the Classic UI with eg:
+
     icinga::classicui::user {'username':
-       passwd => 'HashPa22worD',
+      passwd => 'HashPa22worD',
     }
 
 The `HashPa22worD` is a typical `htpasswd` hash and can be generated with `htpasswd -n username`.
