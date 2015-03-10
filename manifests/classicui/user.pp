@@ -4,7 +4,7 @@ define icinga::classicui::user(
   $ensure = present
   ) {
 
-  htpasswd{"$icinga::classicui::user::${title}":
+  htpasswd{"icinga::classicui::user::${title}":
     ensure      => $ensure,
     username    => $user,
     target      => $icinga::classicui::params::passwd_file,

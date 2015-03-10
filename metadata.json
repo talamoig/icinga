@@ -7,6 +7,7 @@
   "source": "https://github.com/talamoig/icinga",
   "issues_url": "https://github.com/talamoig/icinga/issues",
   "project_page": "https://github.com/talamoig/icinga",
+  "tags": ["icinga", "nagios", "monitoring"],
   "description": "Puppet module for icinga2 backend, classic UI and Web 1.x installation",
   "requirements": [
     {
@@ -26,6 +27,9 @@
        {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [ "6" ]
+      },
+       {
+      "operatingsystem": "Ubuntu"
       }
       ]
 }

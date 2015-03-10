@@ -2,7 +2,7 @@ class icinga::repo {
   
   if $icinga::with_repo {
     case $::operatingsystem {
-      RedHat,CentOS,ScientificLinux: {        
+      RedHat,CentOS,ScientificLinux: {
         yumrepo {'icinga-stable-release':
           baseurl  => 'http://packages.icinga.org/epel/$releasever/release/',
           enabled  => '1',

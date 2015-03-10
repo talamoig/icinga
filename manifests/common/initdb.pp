@@ -8,10 +8,10 @@ define icinga::common::initdb (
   $dbname,
   ){
   $dbclient=$icinga::params::dbclient[$dbtype]
-  $connection_string="${dbclient} --user=${dbuser} --password=${dbpasswd} --host=${dbhost} ${dbname}"
+  $conn="${dbclient} --user=${dbuser} --password=${dbpasswd} --host=${dbhost} ${dbname}"
   
   exec{"icinga::initdb_${title}":
-    command  => "/bin/bash -c '${connection_string} < $schema'",
-    unless   => "/bin/bash -c 'echo \"describe $test_table\"|${connection_string} >/dev/null 2>&1'",
+    command => "/bin/bash -c '${conn} < ${schema}'",
+    unless  => "/bin/bash -c 'echo \"describe ${test_table}\"|${conn} >/dev/null 2>&1'",
   }
 }

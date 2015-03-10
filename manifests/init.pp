@@ -53,25 +53,28 @@ class icinga (
   class { 'icinga::repo': }
 
   if ($with_backend) {
-    RedHat,CentOS,Ubuntu: {
-      Class[icinga::repo]      -> Class[icinga::package]
-      Class[icinga::package]   -> Class[icinga::configure]
-      Class[icinga::configure] -> Class[icinga::service]
-      
-      class { 'icinga::package': }
-      class { 'icinga::service': }
-      class { 'icinga::configure': }
-      
+    case $operatingsystem {
+      RedHat,CentOS,Ubuntu: {
+        Class[icinga::repo]      -> Class[icinga::package]
+        Class[icinga::package]   -> Class[icinga::configure]
+        Class[icinga::configure] -> Class[icinga::service]
+        
+        class { 'icinga::package': }
+        class { 'icinga::service': }
+        class { 'icinga::configure': }
+        
+      }
+      default: { fail("Currently unavailable for ${::osfamily}") }
     }
-    default: { fail("Currently unavailable for ${::osfamily}") }
   }
-
   if ($with_webgui) {
-    RedHat,CentOS,Ubuntu: {
-      class{'icinga::webgui':}      
+    case $operatingsystem {
+      RedHat,CentOS,Ubuntu: {
+        class{'icinga::webgui':}
+      }
+      default: { fail("Currently unavailable for ${::osfamily}") }
     }
-    default: { fail("Currently unavailable for ${::osfamily}") }
-  }     
+  }
   
   if ($with_classicui) {
     case $::osfamily {
@@ -79,7 +82,7 @@ class icinga (
         class{'icinga::classicui':
         }
       }
-      default: { fail("Currently available only for RedHat osfamily") }
+      default: { fail('Currently available only for RedHat osfamily') }
     }
   }
 }
