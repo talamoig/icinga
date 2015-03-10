@@ -1,6 +1,6 @@
 {
   "name": "talamoig-icinga",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "talamoig",
   "summary": "Icinga2 puppet module",
   "license": "Apache-2.0",
