@@ -9,7 +9,6 @@ class icinga::webgui (
   $backend_dbuser        = $icinga::webgui::params::backend_dbuser,
   $backend_dbpasswd      = $icinga::webgui::params::backend_dbpasswd,
   $backend_dbname        = $icinga::webgui::params::backend_dbname,
-  $db_overwrite_defaults = $icinga::webgui::params::db_overwrite_defaults,
   $initdb                = $icinga::webgui::params::initdb
 ) inherits icinga::webgui::params {
 

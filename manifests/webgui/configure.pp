@@ -4,13 +4,6 @@ class icinga::webgui::configure {
     ensure  => present,
     content => template('icinga/webgui/databases.erb'),
   }
-
-  if $icinga::webgui::db_overwrite_defaults {
-    file{$icinga::webgui::params::db_default_config_file:
-      ensure  => present,
-      content => template('icinga/webgui/databases_default.erb'),
-    }
-  }
   
   if $icinga::webgui::initdb {
 
