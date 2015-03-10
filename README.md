@@ -30,6 +30,7 @@ This module installs:
  * Icinga Web 1.x interface (if specified), class `icinga::webgui`;
  * Icinga Classic UI (if specified and only on RedHat family), class `icinga::classicui`.
 
+
 The web interface `icingaweb2` is available as a separate module at
 [github](https://github.com/talamoig/icingaweb2) and [puppet
 forge](https://forge.puppetlabs.com/talamoig/icingaweb2).
