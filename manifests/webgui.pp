@@ -13,9 +13,9 @@ class icinga::webgui (
 ) inherits icinga::webgui::params {
 
   case $::osfamily {
-    RedHat: {
+    RedHat,Debian: {
 
-      Class[icinga::yumrepo] -> Class[icinga::webgui::package]
+      Class[icinga::repo] -> Class[icinga::webgui::package]
       Class[icinga::webgui::package] -> Class[icinga::webgui::configure]
       
       class { 'icinga::webgui::package': }

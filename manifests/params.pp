@@ -14,6 +14,7 @@ class icinga::params {
   $initdb                   = false
   $dbclient                 = {'mysql' => '/usr/bin/mysql', 'pgsql' => '/usr/bin/pgsql'}
   $dbpasswd_opt             = {'mysql' => '-p', 'pgsql' => '--password'}
+  $with_backend             = true
   $with_classicui           = false
   $with_webgui              = false
 }

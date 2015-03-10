@@ -13,5 +13,23 @@ class icinga::webgui::params {
   $db_config_file           = '/etc/icinga-web/conf.d/databases.xml'
   $db_default_config_file   = '/usr/share/icinga-web/app/config/databases.xml'
   $initdb                   = false
-  $packages                 = ['icinga-web', 'icinga-web-mysql', 'icinga-web-module-pnp' ]
+  $package_base             = 'icinga-web'
+  $package_db               =
+  {
+    'RedHat' => 'icinga-web-',
+    'Debian' => 'icinga-web-config-icinga2-ido-'
+  }
+  $db_schema                =
+  {
+    'RedHat' =>
+    {
+      'mysql' => '/usr/share/doc/icinga-web-1.12.0/schema/mysql.sql',
+      'pgsql' => '/usr/share/doc/icinga-web-1.12.0/schema/pgsql.sql'
+    },
+    'Debian' =>
+    {
+      'mysql' => '/usr/share/dbconfig-common/data/icinga-web/install/mysql',
+      'pgsql' => '/usr/share/dbconfig-common/data/icinga-web/install/pgsql'
+    }
+  }
 }

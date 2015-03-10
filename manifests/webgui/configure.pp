@@ -7,7 +7,7 @@ class icinga::webgui::configure {
   
   if $icinga::webgui::initdb {
 
-    $schema = '/usr/share/doc/icinga-web-1.12.0/schema/mysql.sql'
+    $schema = $icinga::webgui::db_schema[$osfamily][$icinga::webgui::dbtype]
 
     icinga::common::initdb{'icinga::webgui::configure::init-db':
       dbtype     => $icinga::dbtype,

@@ -15,27 +15,39 @@
 
 ## Overview
 
-This icinga module allows you to setup an [Icinga 2](https://www.icinga.org/) monitoring system.
+This module installs [Icinga 2](https://www.icinga.org/) giving you the opportunity to select 
+the components to install (backend, Web 1.x frontent, Classic frontent).
 
-Available at 
-[Puppet Forge](https://forge.puppetlabs.com/talamoig/icinga) and 
+It is available as a module at
+[Puppet Forge](https://forge.puppetlabs.com/talamoig/icinga) and on
 [GitHub](https://github.com/talamoig/icinga).
 
 ## Module Description
 
-This module installs Icinga 2 backend by default and can optionally install the Classic UI and the Icinga Web 1.x interface.
+This module installs:
+
+ * Icinga 2 backend (by default), class `icinga`;
+ * Icinga Web 1.x interface (if specified), class `icinga::webgui`;
+ * Icinga Classic UI (if specified and only on RedHat family), class `icinga::classicui`.
 
 The web interface `icingaweb2` is available as a separate module at
-([github](https://github.com/talamoig/icingaweb2) and [puppet
+[github](https://github.com/talamoig/icingaweb2) and [puppet
 forge](https://forge.puppetlabs.com/talamoig/icingaweb2).
 
-Both MySQL and PostgreSQL database are supported and is assumed that database schema and user have already been created.
-If it has not been done, after the puppet module has been installed you should run
-the following command for MySQL:
+The credential to access the database MUST have been created before the installation.
+
+By default the modules assumes that the database schema has already been created on the database backend
+but if the `initdb => true` is provided it will create it for you.
+The `initdb` option is available for both Icinga 2 backend and Icinga Web 1.x interface classes.
+
+Please use the `initdb` with caution, since if any data is already present on the database they will be cleared.
+
+Both MySQL and PostgreSQL database are supported and the commands executed to init the database
+on the `icinga` class is for MySQL:
 
     mysql -u root -p icinga < /usr/share/icinga2-ido-mysql/schema/mysql.sql
 
-and the following for PostgreSQL:
+and for PostgreSQL:
 
     psql -U icinga -d icinga < /usr/share/icinga2-ido-pgsql/schema/pgsql.sql
 
@@ -87,6 +99,7 @@ to the `dbtype` parameter.
 
 For using the Icinga Web 1.x interface you will need at least the following features: 'statusdata', 'compatlog', 'command'.
 
+
 #### Installing the Classic UI
 
 To install the Classic UI set `with_classicui => true` as parameter to the `icinga` class or with:
@@ -122,7 +135,7 @@ Here we describe some typical setups for Icinga.
 
 #### Scenario 1: All-in-one
 
-In this setup we have a node that will have:
+In this setup we have a node that will host:
 
  * a MySQL database for Icinga 2 monitoring;
  * Icinga 2 monitoring;
@@ -135,17 +148,14 @@ This installation requires the following puppet modules installed:
  * [epel](https://forge.puppetlabs.com/stahnma/epel);
  * [apache](https://forge.puppetlabs.com/puppetlabs/apache).
 
-A node like this can be configured with the following puppet code:
+Such a node can be configured with the following puppet code:
 
     class{'::epel':}
   
     class{'::icinga':
       initdb           => true,
+      with_classicui   => true,
       enabled_features => ['statusdata', 'compatlog', 'command'],
-    }
-
-    class{'::icinga::classicui':
-      initdb              => true,    
     }
   
     class{'::icinga::webgui':
@@ -181,8 +191,10 @@ A node like this can be configured with the following puppet code:
 
 ## Limitations
 
-This module has been tested on Scientific Linux 6 and CentOS 6 with Puppet 3.1.1 and 3.7.4.
-It should be compatible with any RedHat 6 based distribution.
+The classicui is available only on RedHat.
+
+This module has been tested on Scientific Linux 6, CentOS 6 and Ubuntu 14 with Puppet 3.1.1 and 3.7.4.
+It should work on most Redhat or Debian linux distributions.
 
 ## Release Notes/Contributors/Etc **Optional**
 
