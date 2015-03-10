@@ -106,12 +106,6 @@ To install the Classic UI set `with_classicui => true` as parameter to the `icin
 
     class{'::icinga::classicui':}
 
-If you also want to create the initial database schema you can add the parameter:
-
-    initdb => true,
-
-Please note that this features has not been carefully tested so use it at your own risk.
-
 You can also create users to the Classic UI with eg:
 
     icinga::classicui::user {'username':
@@ -127,7 +121,8 @@ To install the Icinga Web 1.x set `with_webgui => true` as parameter to the `ici
 
     class{'::icinga::webgui':}
 
-Also this class sopports the `initdb` parameters.
+If you provide the `initdb => true` parameter it will also create the database schema if the right credentials have
+been created on the database.
 
 ### Typical Scenarios
 
@@ -191,10 +186,11 @@ Such a node can be configured with the following puppet code:
 
 ## Limitations
 
-The classicui is available only on RedHat.
-
-This module has been tested on Scientific Linux 6, CentOS 6 and Ubuntu 14 with Puppet 3.1.1 and 3.7.4.
+The module has been tested on Scientific Linux 6, CentOS 6 and Ubuntu 14 with Puppet 3.1.1 and 3.7.4.
 It should work on most Redhat or Debian linux distributions.
+
+The `icinga::classicui` class is available only on RedHat.
+
 
 ## Release Notes/Contributors/Etc **Optional**
 
