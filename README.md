@@ -91,17 +91,18 @@ For using the Icinga Web 1.x interface you will need at least the following feat
 
 To install the Classic UI set `with_classicui => true` as parameter to the `icinga` class or with:
 
-   class{'::icinga::classicui':}
+    class{'::icinga::classicui':}
 
 If you also want to create the initial database schema you can add the parameter:
 
-    initdb => true,    
+    initdb => true,
 
 Please note that this features has not been carefully tested so use it at your own risk.
 
 You can also create users to the Classic UI with eg:
+
     icinga::classicui::user {'username':
-       passwd => 'HashPa22worD',
+      passwd => 'HashPa22worD',
     }
 
 The `HashPa22worD` is a typical `htpasswd` hash and can be generated with `htpasswd -n username`.
@@ -111,7 +112,7 @@ This features requires this [htpasswd](https://forge.puppetlabs.com/leinaddm/htp
 
 To install the Icinga Web 1.x set `with_webgui => true` as parameter to the `icinga` class or
 
-   class{'::icinga::webgui':}
+    class{'::icinga::webgui':}
 
 Also this class sopports the `initdb` parameters.
 
@@ -121,7 +122,7 @@ Here we describe some typical setups for Icinga.
 
 #### Scenario 1: All-in-one
 
-In this setup we have a node called `monitoring-host` that will have:
+In this setup we have a node that will have:
 
  * a MySQL database for Icinga 2 monitoring;
  * Icinga 2 monitoring;
@@ -136,44 +137,46 @@ This installation requires the following puppet modules installed:
 
 A node like this can be configured with the following puppet code:
 
-  class{'::epel':}
+    class{'::epel':}
   
-  class{'::icinga':
-    initdb           => true,
-    enabled_features => ['statusdata', 'compatlog', 'command'],
-  }
+    class{'::icinga':
+      initdb           => true,
+      enabled_features => ['statusdata', 'compatlog', 'command'],
+    }
 
-  class{'::icinga::classicui':
-    initdb              => true,    
-  }
+    class{'::icinga::classicui':
+      initdb              => true,    
+    }
   
-  class{'::icinga::webgui':
-    initdb              => true,    
-  }
+    class{'::icinga::webgui':
+      initdb              => true,    
+    }
   
-  class { '::mysql::server':
-    root_password           => 'strongpassword',
-    remove_default_accounts => true,
-    override_options        => $override_options
-  }
+    class { '::mysql::server':
+      root_password           => 'strongpassword',
+      remove_default_accounts => true,
+      override_options        => $override_options
+    }
   
-  class { 'apache':
-    purge_configs => false,   
-  }
-  class {'::apache::mod::php': }
+    class { 'apache':
+      purge_configs => false,   
+    }
   
-  mysql::db { 'icinga':
-    user     => 'icinga',
-    password => 'icinga',
-    host     => 'localhost',
-    grant    => ['ALL'],
-  }
-  mysql::db { 'icinga_web':
-    user     => 'icinga_web',
-    password => 'icinga_web',
-    host     => 'localhost',
-    grant    => ['ALL'],
-  }
+     class {'::apache::mod::php': }
+  
+    mysql::db { 'icinga':
+      user     => 'icinga',
+      password => 'icinga',
+      host     => 'localhost',
+      grant    => ['ALL'],
+    }
+    
+    mysql::db { 'icinga_web':
+      user     => 'icinga_web',
+      password => 'icinga_web',
+      host     => 'localhost',
+      grant    => ['ALL'],
+    }
 
 
 ## Limitations
