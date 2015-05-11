@@ -53,7 +53,7 @@ class icinga (
   class { 'icinga::repo': }
 
   if ($with_backend) {
-    case $operatingsystem {
+    case $::operatingsystem {
       RedHat,CentOS,Ubuntu: {
         Class[icinga::repo]      -> Class[icinga::package]
         Class[icinga::package]   -> Class[icinga::configure]
@@ -68,7 +68,7 @@ class icinga (
     }
   }
   if ($with_webgui) {
-    case $operatingsystem {
+    case $::operatingsystem {
       RedHat,CentOS,Ubuntu: {
         class{'icinga::webgui':}
       }

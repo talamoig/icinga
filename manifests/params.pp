@@ -12,8 +12,12 @@ class icinga::params {
   $with_repo                = true
   $icinga_bin               = '/usr/sbin/icinga2'
   $initdb                   = false
-  $dbclient                 = {'mysql' => '/usr/bin/mysql', 'pgsql' => '/usr/bin/pgsql'}
-  $dbpasswd_opt             = {'mysql' => '-p', 'pgsql' => '--password'}
+  $dbclient                 = {
+    'mysql' => '/usr/bin/mysql',
+    'pgsql' => '/usr/bin/pgsql'}
+  $dbpasswd_opt             = {
+    'mysql' => '-p',
+    'pgsql' => '--password'}
   $with_backend             = true
   $with_classicui           = false
   $with_webgui              = false
